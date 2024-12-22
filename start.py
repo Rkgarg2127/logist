@@ -48,6 +48,10 @@ def GridSearchCVModel(X_train, X_test, y_train, y_test):
     scaler = StandardScaler()
     X_train_scaled = scaler.fit_transform(X_train)
     X_test_scaled = scaler.transform(X_test)
+    # You can get the transformed feature names by checking the columns in the original dataframe
+    feature_columns = X_train.columns.tolist()  # This should be the list of features used in training
+
+    print(feature_columns)
     joblib.dump(scaler, 'scaler.pkl')
     print("Scaler saved as 'scaler.pkl'")
 
