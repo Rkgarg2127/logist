@@ -1,0 +1,93 @@
+# Freight Delivery Prediction API
+
+This project is a **Freight Delivery Prediction API** that uses machine learning models to predict whether a shipment will be delivered on time or delayed. The API is built using Flask and supports multiple models, including Logistic Regression, Random Forest Classifier, and Gradient Boosting Classifier. The data preprocessing, model training, and prediction functionalities are implemented end-to-end.
+
+---
+
+## Features
+- **Machine Learning Models**: Logistic Regression, Random Forest Classifier, and Gradient Boosting Classifier.
+- **Data Preprocessing**: Handles categorical and numerical features, scales data, and ensures input compatibility with models.
+- **RESTful API**: Offers an endpoint for predictions.
+- **Deployable**: Designed to run locally or be deployed to a server.
+
+---
+
+
+## Setup and Installation
+
+### Prerequisites
+1. Python 3.8 or above.
+2. `pip` (Python package installer).
+3. A virtual environment (optional but recommended).
+
+### Step 1: Clone the Repository
+Clone this repository to your local machine:
+```bash
+git clone https://github.com/your-repo-name/freight-delivery-prediction.git
+cd freight-delivery-prediction
+```
+
+### Step 2: Create a Virtual Environment
+(Optional but recommended to manage dependencies):
+```bash
+python -m venv venv
+source venv/bin/activate # On Windows: venv\Scripts\activate
+```
+
+### Step 3: Install Dependencies
+Install the required Python packages:
+```bash
+pip install -r requirements.txt
+```
+
+### Step 4: Train and Save Models
+Run the `train_models.py` script to train models and save them as `.pkl` files:
+```bash
+python train_models.py
+```
+Ensure that the trained models and scaler are saved in the project directory.
+
+### Step 5: Start the Flask API
+Run the Flask app:
+```bash
+python flaskApp.py
+```
+The API will be accessible at `http://127.0.0.1:5000` by default.
+
+---
+
+### Sample Request
+Here is an example JSON payload:
+```json
+{
+    "Vehicle Type": "Truck",
+    "Weather Conditions": "Clear",
+    "Traffic Conditions": "Moderate",
+    "Distance (km)": 150,
+    "Origin": "City A",
+    "Destination": "City B"
+}
+```
+
+### Sample Curl Command
+```bash
+curl -X POST http://127.0.0.1:5000/predict \
+-H "Content-Type: application/json" \
+-d '{
+    "Vehicle Type": "Truck",
+    "Weather Conditions": "Clear",
+    "Traffic Conditions": "Moderate",
+    "Distance (km)": 150,
+    "Origin": "City A",
+    "Destination": "City B"
+}'
+```
+
+### Sample Response
+```json
+{
+    "prediction": "On Time"
+}
+```
+
+
